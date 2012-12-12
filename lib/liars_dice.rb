@@ -163,7 +163,7 @@ class LiarsDice
   def check_spoton
     puts self.print_dice(true)
     totals = get_dice_totals
-    if totals[@current_bet[:face].to_i] == @current_bet[:count]
+    if totals[@current_bet[:face].to_i] == @current_bet[:count].to_i
       puts "#{@players[@current_player]} is correct! #{@players[@waiting_player]} loses one die!"
       @dice_remaining[@waiting_player] -= 1
     else
