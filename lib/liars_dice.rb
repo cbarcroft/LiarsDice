@@ -9,7 +9,11 @@ class LiarsDice
     @players = {:player => "Player", :computer => "Computer"}
     @current_player = first_turn
     if first_turn == false
-      @current_player = [:computer, :player].sample
+      if [:computer, :player].respond_to?("sample") then
+        @current_player = [:computer, :player].sample
+      else
+        @current_player = [:computer, :player].choice
+      end
     end
     @waiting_player = [:computer, :player].select{|player| player != @current_player}[0]
     @current_bet = {:face => 1, :count => 1}
